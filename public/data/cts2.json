@@ -1,0 +1,1102 @@
+   {
+      "endpoints":[
+         {
+            "name":"CTS2 REST API",
+            "methods":[
+               {
+                  "MethodName":"Search Entities",
+                  "Synopsis":"Search All CTS2 Entities",
+                  "HTTPMethod":"GET",
+                  "URI":"/entities",
+                  "parameters":[
+                     {
+                        "Name":"format",
+                        "Required":"N",
+                        "Type":"enumerated",
+                        "EnumeratedList": [
+                        "",
+                          "json",
+                          "xml"
+                         ],
+                        "EnumeratedDescription": {
+                           "": "Default (xml), or the value of the 'Accept' header",
+                          "json": "JSON Format",
+                          "xml": "CTS2 XML"
+                         },
+                        "Description":"Response Format"
+                     },
+                     {
+                        "Name":"q",
+                        "Required":"N",
+                        "Type":"string",
+                        "Description":"Query String"
+                     },
+                     {
+                        "Name":"filtercomponent",
+                        "Required":"N",
+                        "Type":"enumerated",
+                        "EnumeratedList": [
+                           "",
+                          "resourceSynopsis",
+                          "resourceName"
+                         ],
+                        "EnumeratedDescription": {
+                           "": "Default (resourceSynopsis)",
+                          "resourceSynopsis": "Search on Description",
+                          "resourceName": "Search on Name (Code)"
+                         },
+                        "Description":"Response Format"
+                     },
+                     {
+                        "Name":"maxtoreturn",
+                        "Required":"N",
+                        "Type":"int",
+                        "Description":"Number of results to return"
+                     },
+                     {
+                        "Name":"matchalgorithm",
+                        "Required":"N",
+                        "Default":"",
+                        "Type":"enumerated",
+                        "EnumeratedList": [
+                          "",
+                          "contains",
+                          "lucene",
+                          "startsWith",
+                          "exactMatch"
+                         ],
+                        "EnumeratedDescription": {
+                           "":"Default (contains)",
+                           "contains": "Contains match",
+                           "lucene": "Lucene search syntax",
+                           "startsWith": "Starts With",
+                           "exactMatch": "Exact Match"
+                         },
+                        "Description": "Match Algorithm"
+                     }
+                  ]
+               },
+
+                {
+                    "MethodName":"Search Entities of a Code System Version",
+                    "Synopsis":"Search Entities of a Code System Version",
+                    "HTTPMethod":"GET",
+                    "URI":"/codesystem/:codesystem/version/:version/entities",
+                    "parameters":[
+                        {
+                            "Name":"codesystem",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "LOINC",
+                            "Description":"CodeSystem"
+                        },
+                        {
+                            "Name":"version",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "LOINC_244",
+                            "Description":"version"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"q",
+                            "Required":"N",
+                            "Type":"string",
+                            "Description":"Query String"
+                        },
+                        {
+                            "Name":"filtercomponent",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "resourceSynopsis",
+                                "resourceName"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (resourceSynopsis)",
+                                "resourceSynopsis": "Search on Description",
+                                "resourceName": "Search on Name (Code)"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"maxtoreturn",
+                            "Required":"N",
+                            "Type":"int",
+                            "Description":"Number of results to return"
+                        },
+                        {
+                            "Name":"matchalgorithm",
+                            "Required":"N",
+                            "Default":"",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "contains",
+                                "lucene",
+                                "startsWith",
+                                "exactMatch"
+                            ],
+                            "EnumeratedDescription": {
+                                "":"Default (contains)",
+                                "contains": "Contains match",
+                                "lucene": "Lucene search syntax",
+                                "startsWith": "Starts With",
+                                "exactMatch": "Exact Match"
+                            },
+                            "Description": "Match Algorithm"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Read an Entity by ID",
+                    "Synopsis":"Read an Entity by ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/codesystem/:codesystem/version/:version/entity/:entityid",
+                    "parameters":[
+                        {
+                            "Name":"codesystem",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "LOINC",
+                            "Description":"CodeSystem"
+                        },
+                        {
+                            "Name":"version",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "LOINC_244",
+                            "Description":"version"
+                        },
+                        {
+                            "Name":"entityid",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "loincid:10200-4",
+                            "Description":"Entity ID"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Read an Entity by URI",
+                    "Synopsis":"Read an Entity by URI",
+                    "HTTPMethod":"GET",
+                    "URI":"/entitybyuri",
+                    "parameters":[
+                        {
+                            "Name":"uri",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "http://id.loinc.org/id/10200-4",
+                            "Description":"Entity URI"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Read an Entity by ID",
+                    "Synopsis":"Read an Entity by ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/entity/:entityid",
+                    "parameters":[
+                        {
+                            "Name":"entityid",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "loincid:10200-4",
+                            "Description":"Entity ID"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Get 'subjectOf' associations",
+                    "Synopsis":"Get 'subjectOf' associations",
+                    "HTTPMethod":"GET",
+                    "URI":"/codesystem/:codesystem/version/:version/entity/:entityid/subjectof",
+                    "parameters":[
+                        {
+                            "Name":"codesystem",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "LOINC",
+                            "Description":"CodeSystem"
+                        },
+                        {
+                            "Name":"version",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "LOINC_244",
+                            "Description":"version"
+                        },
+                        {
+                            "Name":"entityid",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "loincid:10200-4",
+                            "Description":"Entity ID"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Get 'targetOf' associations",
+                    "Synopsis":"Get 'targetOf' associations",
+                    "HTTPMethod":"GET",
+                    "URI":"/codesystem/:codesystem/version/:version/entity/:entityid/targetof",
+                    "parameters":[
+                        {
+                            "Name":"codesystem",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "LOINC",
+                            "Description":"CodeSystem"
+                        },
+                        {
+                            "Name":"version",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "LOINC_244",
+                            "Description":"version"
+                        },
+                        {
+                            "Name":"entityid",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "loincid:10200-4",
+                            "Description":"Entity ID"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Search Code Systems",
+                    "Synopsis":"Search All CTS2 Code Systems",
+                    "HTTPMethod":"GET",
+                    "URI":"/codesystems",
+                    "parameters":[
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"q",
+                            "Required":"N",
+                            "Type":"string",
+                            "Description":"Query String"
+                        },
+                        {
+                            "Name":"filtercomponent",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "resourceSynopsis",
+                                "resourceName"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (resourceSynopsis)",
+                                "resourceSynopsis": "Search on Description",
+                                "resourceName": "Search on Name (Code)"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"maxtoreturn",
+                            "Required":"N",
+                            "Type":"int",
+                            "Description":"Number of results to return"
+                        },
+                        {
+                            "Name":"matchalgorithm",
+                            "Required":"N",
+                            "Default":"",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "contains",
+                                "lucene",
+                                "startsWith",
+                                "exactMatch"
+                            ],
+                            "EnumeratedDescription": {
+                                "":"Default (contains)",
+                                "contains": "Contains match",
+                                "lucene": "Lucene search syntax",
+                                "startsWith": "Starts With",
+                                "exactMatch": "Exact Match"
+                            },
+                            "Description": "Match Algorithm"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Read a Code System by ID",
+                    "Synopsis":"Read a Code System by ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/codesystem/:codesystem",
+                    "parameters":[
+                        {
+                            "Name":"codesystem",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "ActStatus",
+                            "Description":"CodeSystem"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Search Code System Versions",
+                    "Synopsis":"Search All CTS2 Code System Versions",
+                    "HTTPMethod":"GET",
+                    "URI":"/codesystemversions",
+                    "parameters":[
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"q",
+                            "Required":"N",
+                            "Type":"string",
+                            "Description":"Query String"
+                        },
+                        {
+                            "Name":"filtercomponent",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "resourceSynopsis",
+                                "resourceName"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (resourceSynopsis)",
+                                "resourceSynopsis": "Search on Description",
+                                "resourceName": "Search on Name (Code)"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"maxtoreturn",
+                            "Required":"N",
+                            "Type":"int",
+                            "Description":"Number of results to return"
+                        },
+                        {
+                            "Name":"matchalgorithm",
+                            "Required":"N",
+                            "Default":"",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "contains",
+                                "lucene",
+                                "startsWith",
+                                "exactMatch"
+                            ],
+                            "EnumeratedDescription": {
+                                "":"Default (contains)",
+                                "contains": "Contains match",
+                                "lucene": "Lucene search syntax",
+                                "startsWith": "Starts With",
+                                "exactMatch": "Exact Match"
+                            },
+                            "Description": "Match Algorithm"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Read a Code System Version by Version ID",
+                    "Synopsis":"Read a Code System Version by ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/codesystem/:codesystem/version/:version",
+                    "parameters":[
+                        {
+                            "Name":"codesystem",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "ActStatus",
+                            "Description":"CodeSystem"
+                        },
+                        {
+                            "Name":"version",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "132",
+                            "Description":"version"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Search Value Sets",
+                    "Synopsis":"Search All CTS2 Value Sets",
+                    "HTTPMethod":"GET",
+                    "URI":"/valuesets",
+                    "parameters":[
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"q",
+                            "Required":"N",
+                            "Type":"string",
+                            "Description":"Query String"
+                        },
+                        {
+                            "Name":"filtercomponent",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "resourceSynopsis",
+                                "resourceName"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (resourceSynopsis)",
+                                "resourceSynopsis": "Search on Description",
+                                "resourceName": "Search on Name (Code)"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"maxtoreturn",
+                            "Required":"N",
+                            "Type":"int",
+                            "Description":"Number of results to return"
+                        },
+                        {
+                            "Name":"matchalgorithm",
+                            "Required":"N",
+                            "Default":"",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "contains",
+                                "lucene",
+                                "startsWith",
+                                "exactMatch"
+                            ],
+                            "EnumeratedDescription": {
+                                "":"Default (contains)",
+                                "contains": "Contains match",
+                                "lucene": "Lucene search syntax",
+                                "startsWith": "Starts With",
+                                "exactMatch": "Exact Match"
+                            },
+                            "Description": "Match Algorithm"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Search Value Set Definitions",
+                    "Synopsis":"Search All CTS2 Value Set Definitions",
+                    "HTTPMethod":"GET",
+                    "URI":"/valuesetdefinitions",
+                    "parameters":[
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"q",
+                            "Required":"N",
+                            "Type":"string",
+                            "Description":"Query String"
+                        },
+                        {
+                            "Name":"filtercomponent",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "resourceSynopsis",
+                                "resourceName"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (resourceSynopsis)",
+                                "resourceSynopsis": "Search on Description",
+                                "resourceName": "Search on Name (Code)"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"maxtoreturn",
+                            "Required":"N",
+                            "Type":"int",
+                            "Description":"Number of results to return"
+                        },
+                        {
+                            "Name":"matchalgorithm",
+                            "Required":"N",
+                            "Default":"",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "contains",
+                                "lucene",
+                                "startsWith",
+                                "exactMatch"
+                            ],
+                            "EnumeratedDescription": {
+                                "":"Default (contains)",
+                                "contains": "Contains match",
+                                "lucene": "Lucene search syntax",
+                                "startsWith": "Starts With",
+                                "exactMatch": "Exact Match"
+                            },
+                            "Description": "Match Algorithm"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Read a Value Set Definition ID",
+                    "Synopsis":"Read a Value Set Definition ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/valueset/:valueset/definition/:definition",
+                    "parameters":[
+                        {
+                            "Name":"valueset",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "ActStatus",
+                            "Description":"CodeSystem"
+                        },
+                        {
+                            "Name":"definition",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "1",
+                            "Description":"version"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Read a Value Set Definition by URI",
+                    "Synopsis":"Read a Value Set Definition by URI",
+                    "HTTPMethod":"GET",
+                    "URI":"/valuesetdefinitionbyuri",
+                    "parameters":[
+                        {
+                            "Name":"uri",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "http://hl7.org/ontology/vocab/uv/vs/ActDietCode/2012-11-21",
+                            "Description":"Value Set Definition URI"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Resolve a Value Set Definition ID",
+                    "Synopsis":"Resolve a Value Set Definition ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/valueset/:valueset/definition/:definition/resolution",
+                    "parameters":[
+                        {
+                            "Name":"valueset",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "ActStatus",
+                            "Description":"CodeSystem"
+                        },
+                        {
+                            "Name":"definition",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "1",
+                            "Description":"version"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+
+                        },
+                        {
+                            "Name":"maxtoreturn",
+                            "Required":"N",
+                            "Type":"int",
+                            "Description":"Number of results to return"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Resolve a Value Set Definition by URI",
+                    "Synopsis":"Resolve a Value Set Definition by URI",
+                    "HTTPMethod":"GET",
+                    "URI":"/valuesetdefinitionbyuri/resolution",
+                    "parameters":[
+                        {
+                            "Name":"uri",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "http://hl7.org/ontology/vocab/uv/vs/ActDietCode/2012-11-21",
+                            "Description":"Value Set Definition URI"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Search Concept Domains",
+                    "Synopsis":"Search All CTS2 Concept Domains",
+                    "HTTPMethod":"GET",
+                    "URI":"/conceptdomains",
+                    "parameters":[
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"q",
+                            "Required":"N",
+                            "Type":"string",
+                            "Description":"Query String"
+                        },
+                        {
+                            "Name":"filtercomponent",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "resourceSynopsis",
+                                "resourceName"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (resourceSynopsis)",
+                                "resourceSynopsis": "Search on Description",
+                                "resourceName": "Search on Name (Code)"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"maxtoreturn",
+                            "Required":"N",
+                            "Type":"int",
+                            "Description":"Number of results to return"
+                        },
+                        {
+                            "Name":"matchalgorithm",
+                            "Required":"N",
+                            "Default":"",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "contains",
+                                "lucene",
+                                "startsWith",
+                                "exactMatch"
+                            ],
+                            "EnumeratedDescription": {
+                                "":"Default (contains)",
+                                "contains": "Contains match",
+                                "lucene": "Lucene search syntax",
+                                "startsWith": "Starts With",
+                                "exactMatch": "Exact Match"
+                            },
+                            "Description": "Match Algorithm"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Read a Concept Domain ID",
+                    "Synopsis":"Read a Concept Domain ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/conceptdomain/:conceptdomainid",
+                    "parameters":[
+                        {
+                            "Name":"conceptdomainid",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "CoverageEligibilityReason",
+                            "Description":"CodeSystem"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Search Concept Domain Bindings",
+                    "Synopsis":"Search All CTS2 Concept Domain Bindings",
+                    "HTTPMethod":"GET",
+                    "URI":"/conceptdomainbindings",
+                    "parameters":[
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"q",
+                            "Required":"N",
+                            "Type":"string",
+                            "Description":"Query String"
+                        },
+                        {
+                            "Name":"filtercomponent",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "resourceSynopsis",
+                                "resourceName"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (resourceSynopsis)",
+                                "resourceSynopsis": "Search on Description",
+                                "resourceName": "Search on Name (Code)"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"maxtoreturn",
+                            "Required":"N",
+                            "Type":"int",
+                            "Description":"Number of results to return"
+                        },
+                        {
+                            "Name":"matchalgorithm",
+                            "Required":"N",
+                            "Default":"",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "contains",
+                                "lucene",
+                                "startsWith",
+                                "exactMatch"
+                            ],
+                            "EnumeratedDescription": {
+                                "":"Default (contains)",
+                                "contains": "Contains match",
+                                "lucene": "Lucene search syntax",
+                                "startsWith": "Starts With",
+                                "exactMatch": "Exact Match"
+                            },
+                            "Description": "Match Algorithm"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Read a Concept Domain Binding by ID",
+                    "Synopsis":"Read a Concept Domain Binding by ID",
+                    "HTTPMethod":"GET",
+                    "URI":"/conceptdomain/:conceptdomainid/binding/:bindingid",
+                    "parameters":[
+                        {
+                            "Name":"conceptdomainid",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "ActClass",
+                            "Description":"CodeSystem"
+                        },
+                        {
+                            "Name":"bindingid",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "1",
+                            "Description":"version"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+
+                        }
+                    ]
+                }
+
+
+
+
+            ]
+         }
+      ]
+   }
