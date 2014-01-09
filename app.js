@@ -60,7 +60,15 @@ if (process.env.REDISTOGO_URL) {
 }
 
 var db = redis.createClient(config.redis.port, config.redis.host);
-db.auth(config.redis.password);
+
+if (process.env.REDISTOGO_URL) {
+    var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+    db = require("redis").createClient(rtg.port, rtg.hostname);
+    db.auth(rtg.auth.split(":")[1]);
+} else {
+    db = redis.createClient(config.redis.port, config.redis.host);
+    db.auth(config.redis.password);
+}
 
 db.on("error", function(err) {
     if (config.debug) {
@@ -89,6 +97,19 @@ try {
 }
 
 var app = module.exports = express();
+
+var hostname, port, password
+
+if (process.env.REDISTOGO_URL) {
+    var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+    hostname = rtg.hostname;
+    port = rtg.port;
+    password = rtg.auth.split(":")[1];
+} else {
+    hostname = config.redis.host;
+    port = config.redis.port;
+    password = config.redis.password;
+}
 
 app.configure(function() {
     app.set('views', __dirname + '/views');
