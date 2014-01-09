@@ -3,6 +3,57 @@
          {
             "name":"CTS2 REST API",
             "methods":[
+                {
+                    "MethodName":"Get CTS2 Service Metadata",
+                    "Synopsis":"Get CTS2 Service Metadata",
+                    "HTTPMethod":"GET",
+                    "URI":"/service",
+                    "parameters":[
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"maxtoreturn",
+                            "Required":"N",
+                            "Type":"int",
+                            "Description":"Number of results to return"
+                        },
+                        {
+                            "Name":"matchalgorithm",
+                            "Required":"N",
+                            "Default":"",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "contains",
+                                "lucene",
+                                "startsWith",
+                                "exactMatch"
+                            ],
+                            "EnumeratedDescription": {
+                                "":"Default (contains)",
+                                "contains": "Contains match",
+                                "lucene": "Lucene search syntax",
+                                "startsWith": "Starts With",
+                                "exactMatch": "Exact Match"
+                            },
+                            "Description": "Match Algorithm"
+                        }
+                    ]
+                },
                {
                   "MethodName":"Search Entities",
                   "Synopsis":"Search All CTS2 Entities",
@@ -165,8 +216,8 @@
                     ]
                 },
                 {
-                    "MethodName":"Read an Entity by ID",
-                    "Synopsis":"Read an Entity by ID",
+                    "MethodName":"Read an Entity of a Code System Version by ID",
+                    "Synopsis":"Read an Entity of a Code System Version by ID",
                     "HTTPMethod":"GET",
                     "URI":"/codesystem/:codesystem/version/:version/entity/:entityid",
                     "parameters":[
@@ -345,6 +396,52 @@
                             "Required":"Y",
                             "Type":"string",
                             "Default": "loincid:10200-4",
+                            "Description":"Entity ID"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Get 'children' associations",
+                    "Synopsis":"Get 'children' associations",
+                    "HTTPMethod":"GET",
+                    "URI":"/codesystem/:codesystem/version/:version/entity/:entityid/children",
+                    "parameters":[
+                        {
+                            "Name":"codesystem",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "ParticipationType",
+                            "Description":"CodeSystem"
+                        },
+                        {
+                            "Name":"version",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "134",
+                            "Description":"version"
+                        },
+                        {
+                            "Name":"entityid",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "ParticipationType:_ParticipationInformationGenerator",
                             "Description":"Entity ID"
                         },
                         {
@@ -686,11 +783,9 @@
                         },
                         {
                             "Name":"filtercomponent",
-                            "Required":"N",
+                            "Required":"Y",
                             "Type":"enumerated",
                             "EnumeratedList": [
-                                "",
-                                "resourceSynopsis",
                                 "resourceName"
                             ],
                             "EnumeratedDescription": {
@@ -800,8 +895,8 @@
                     ]
                 },
                 {
-                    "MethodName":"Resolve a Value Set Definition ID",
-                    "Synopsis":"Resolve a Value Set Definition ID",
+                    "MethodName":"Resolve a Value Set Definition by ID",
+                    "Synopsis":"Resolve a Value Set Definition by ID",
                     "HTTPMethod":"GET",
                     "URI":"/valueset/:valueset/definition/:definition/resolution",
                     "parameters":[
@@ -1010,11 +1105,9 @@
                         },
                         {
                             "Name":"filtercomponent",
-                            "Required":"N",
+                            "Required":"Y",
                             "Type":"enumerated",
                             "EnumeratedList": [
-                                "",
-                                "resourceSynopsis",
                                 "resourceName"
                             ],
                             "EnumeratedDescription": {
@@ -1092,10 +1185,6 @@
                         }
                     ]
                 }
-
-
-
-
             ]
          }
       ]
