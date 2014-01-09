@@ -1,6 +1,6 @@
-   {
-      "endpoints":[
-         {
+{
+    "endpoints":[
+        {
             "name":"CTS2 REST API",
             "methods":[
                 {
@@ -54,79 +54,79 @@
                         }
                     ]
                 },
-               {
-                  "MethodName":"Search Entities",
-                  "Synopsis":"Search All CTS2 Entities",
-                  "HTTPMethod":"GET",
-                  "URI":"/entities",
-                  "parameters":[
-                     {
-                        "Name":"format",
-                        "Required":"N",
-                        "Type":"enumerated",
-                        "EnumeratedList": [
-                        "",
-                          "json",
-                          "xml"
-                         ],
-                        "EnumeratedDescription": {
-                           "": "Default (xml), or the value of the 'Accept' header",
-                          "json": "JSON Format",
-                          "xml": "CTS2 XML"
-                         },
-                        "Description":"Response Format"
-                     },
-                     {
-                        "Name":"q",
-                        "Required":"N",
-                        "Type":"string",
-                        "Description":"Query String"
-                     },
-                     {
-                        "Name":"filtercomponent",
-                        "Required":"N",
-                        "Type":"enumerated",
-                        "EnumeratedList": [
-                           "",
-                          "resourceSynopsis",
-                          "resourceName"
-                         ],
-                        "EnumeratedDescription": {
-                           "": "Default (resourceSynopsis)",
-                          "resourceSynopsis": "Search on Description",
-                          "resourceName": "Search on Name (Code)"
-                         },
-                        "Description":"Response Format"
-                     },
-                     {
-                        "Name":"maxtoreturn",
-                        "Required":"N",
-                        "Type":"int",
-                        "Description":"Number of results to return"
-                     },
-                     {
-                        "Name":"matchalgorithm",
-                        "Required":"N",
-                        "Default":"",
-                        "Type":"enumerated",
-                        "EnumeratedList": [
-                          "",
-                          "contains",
-                          "lucene",
-                          "startsWith",
-                          "exactMatch"
-                         ],
-                        "EnumeratedDescription": {
-                           "":"Default (contains)",
-                           "contains": "Contains match",
-                           "lucene": "Lucene search syntax",
-                           "startsWith": "Starts With",
-                           "exactMatch": "Exact Match"
-                         },
-                        "Description": "Match Algorithm"
-                     }
-                  ]
-               },
+                {
+                    "MethodName":"Search Entities",
+                    "Synopsis":"Search All CTS2 Entities",
+                    "HTTPMethod":"GET",
+                    "URI":"/entities",
+                    "parameters":[
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"q",
+                            "Required":"N",
+                            "Type":"string",
+                            "Description":"Query String"
+                        },
+                        {
+                            "Name":"filtercomponent",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "resourceSynopsis",
+                                "resourceName"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (resourceSynopsis)",
+                                "resourceSynopsis": "Search on Description",
+                                "resourceName": "Search on Name (Code)"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"maxtoreturn",
+                            "Required":"N",
+                            "Type":"int",
+                            "Description":"Number of results to return"
+                        },
+                        {
+                            "Name":"matchalgorithm",
+                            "Required":"N",
+                            "Default":"",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "contains",
+                                "lucene",
+                                "startsWith",
+                                "exactMatch"
+                            ],
+                            "EnumeratedDescription": {
+                                "":"Default (contains)",
+                                "contains": "Contains match",
+                                "lucene": "Lucene search syntax",
+                                "startsWith": "Starts With",
+                                "exactMatch": "Exact Match"
+                            },
+                            "Description": "Match Algorithm"
+                        }
+                    ]
+                },
 
                 {
                     "MethodName":"Search Entities of a Code System Version",
@@ -146,6 +146,180 @@
                             "Required":"Y",
                             "Type":"string",
                             "Default": "LOINC_244",
+                            "Description":"version"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"q",
+                            "Required":"N",
+                            "Type":"string",
+                            "Description":"Query String"
+                        },
+                        {
+                            "Name":"filtercomponent",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "resourceSynopsis",
+                                "resourceName"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (resourceSynopsis)",
+                                "resourceSynopsis": "Search on Description",
+                                "resourceName": "Search on Name (Code)"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"maxtoreturn",
+                            "Required":"N",
+                            "Type":"int",
+                            "Description":"Number of results to return"
+                        },
+                        {
+                            "Name":"matchalgorithm",
+                            "Required":"N",
+                            "Default":"",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "contains",
+                                "lucene",
+                                "startsWith",
+                                "exactMatch"
+                            ],
+                            "EnumeratedDescription": {
+                                "":"Default (contains)",
+                                "contains": "Contains match",
+                                "lucene": "Lucene search syntax",
+                                "startsWith": "Starts With",
+                                "exactMatch": "Exact Match"
+                            },
+                            "Description": "Match Algorithm"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Search Entities of a Code System Version by Code System URI",
+                    "Synopsis":"Search Entities of a Code System Version by System URI",
+                    "HTTPMethod":"GET",
+                    "URI":"/codesystembyuri/version/:version/entities",
+                    "parameters":[
+                        {
+                            "Name":"uri",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "http://hl7.org/ontology/vocab/uv/cs/ParticipationType",
+                            "Description":"CodeSystem URI"
+                        },
+                        {
+                            "Name":"version",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "134",
+                            "Description":"version"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"q",
+                            "Required":"N",
+                            "Type":"string",
+                            "Description":"Query String"
+                        },
+                        {
+                            "Name":"filtercomponent",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "resourceSynopsis",
+                                "resourceName"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (resourceSynopsis)",
+                                "resourceSynopsis": "Search on Description",
+                                "resourceName": "Search on Name (Code)"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"maxtoreturn",
+                            "Required":"N",
+                            "Type":"int",
+                            "Description":"Number of results to return"
+                        },
+                        {
+                            "Name":"matchalgorithm",
+                            "Required":"N",
+                            "Default":"",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "contains",
+                                "lucene",
+                                "startsWith",
+                                "exactMatch"
+                            ],
+                            "EnumeratedDescription": {
+                                "":"Default (contains)",
+                                "contains": "Contains match",
+                                "lucene": "Lucene search syntax",
+                                "startsWith": "Starts With",
+                                "exactMatch": "Exact Match"
+                            },
+                            "Description": "Match Algorithm"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Search Entities of a Code System Version by Code System OID",
+                    "Synopsis":"Search Entities of a Code System Version by System OID",
+                    "HTTPMethod":"GET",
+                    "URI":"/codesystembyuri/version/:version/entities",
+                    "parameters":[
+                        {
+                            "Name":"uri",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "urn:oid:2.16.840.1.113883.5.90",
+                            "Description":"CodeSystem OID"
+                        },
+                        {
+                            "Name":"version",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "134",
                             "Description":"version"
                         },
                         {
@@ -381,21 +555,21 @@
                             "Name":"codesystem",
                             "Required":"Y",
                             "Type":"string",
-                            "Default": "LOINC",
+                            "Default": "ParticipationType",
                             "Description":"CodeSystem"
                         },
                         {
                             "Name":"version",
                             "Required":"Y",
                             "Type":"string",
-                            "Default": "LOINC_244",
+                            "Default": "134",
                             "Description":"version"
                         },
                         {
                             "Name":"entityid",
                             "Required":"Y",
                             "Type":"string",
-                            "Default": "loincid:10200-4",
+                            "Default": "ParticipationType:_ParticipationInformationGenerator",
                             "Description":"Entity ID"
                         },
                         {
@@ -548,6 +722,70 @@
                             "Type":"string",
                             "Default": "ActStatus",
                             "Description":"CodeSystem"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Read a Code System by URI",
+                    "Synopsis":"Read a Code System by URI",
+                    "HTTPMethod":"GET",
+                    "URI":"/codesystembyuri",
+                    "parameters":[
+                        {
+                            "Name":"uri",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "http://hl7.org/ontology/vocab/uv/cs/ParticipationType",
+                            "Description":"URI"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"Read a Code System by OID",
+                    "Synopsis":"Read a Code System by OID",
+                    "HTTPMethod":"GET",
+                    "URI":"/codesystembyuri",
+                    "parameters":[
+                        {
+                            "Name":"uri",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "urn:oid:2.16.840.1.113883.5.90",
+                            "Description":"OID"
                         },
                         {
                             "Name":"format",
@@ -1000,11 +1238,9 @@
                         },
                         {
                             "Name":"filtercomponent",
-                            "Required":"N",
+                            "Required":"Y",
                             "Type":"enumerated",
                             "EnumeratedList": [
-                                "",
-                                "resourceSynopsis",
                                 "resourceName"
                             ],
                             "EnumeratedDescription": {
@@ -1186,6 +1422,6 @@
                     ]
                 }
             ]
-         }
-      ]
-   }
+        }
+    ]
+}
