@@ -2,7 +2,7 @@
     "cts2": {
         "name": "CTS2",
         "protocol": "http",
-        "baseURL": "10.148.2.82:8888",
-        "publicPath": ""
+        "baseURL": "informatics.mayo.edu",
+        "publicPath": "/cts2/services/tlamp"
     }
 }
