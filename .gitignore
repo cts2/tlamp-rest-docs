@@ -5,3 +5,4 @@ pids/*
 .idea
 *.iml
 nohup.out
+dump.rdb
