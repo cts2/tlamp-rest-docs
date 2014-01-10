@@ -643,16 +643,16 @@ li {
   border-color: rgba(255, 100, 100, 0.5);
 }
 
-.get {
+.head, .get {
   background: #e7f0f7;
   border-color: #aecce4;
 }
 
-.get .http-method {
+.head .http-method, .get .http-method {
   background-color: #0061ac;
 }
 
-.get th, .get td {
+.head th, .get th, .head td, .get td {
   border-bottom: 1px solid #9ac0de;
 }
 

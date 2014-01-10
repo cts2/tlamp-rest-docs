@@ -995,6 +995,86 @@
                     ]
                 },
                 {
+                    "MethodName":"Search Code System Versions of a Code System",
+                    "Synopsis":"Search All CTS2 Code System Versions of a Code System",
+                    "HTTPMethod":"GET",
+                    "URI":"/codesystem/:codesystem/versions",
+                    "parameters":[
+                        {
+                            "Name":"codesystem",
+                            "Required":"Y",
+                            "Type":"string",
+                            "Default": "ActClass",
+                            "Description":"CodeSystem"
+                        },
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"q",
+                            "Required":"N",
+                            "Type":"string",
+                            "Description":"Query String"
+                        },
+                        {
+                            "Name":"filtercomponent",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "resourceSynopsis",
+                                "resourceName"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (resourceSynopsis)",
+                                "resourceSynopsis": "Search on Description",
+                                "resourceName": "Search on Name (Code)"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"maxtoreturn",
+                            "Required":"N",
+                            "Type":"int",
+                            "Description":"Number of results to return"
+                        },
+                        {
+                            "Name":"matchalgorithm",
+                            "Required":"N",
+                            "Default":"",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "contains",
+                                "lucene",
+                                "startsWith",
+                                "exactMatch"
+                            ],
+                            "EnumeratedDescription": {
+                                "":"Default (contains)",
+                                "contains": "Contains match",
+                                "lucene": "Lucene search syntax",
+                                "startsWith": "Starts With",
+                                "exactMatch": "Exact Match"
+                            },
+                            "Description": "Match Algorithm"
+                        }
+                    ]
+                },
+                {
                     "MethodName":"Read a Code System Version by Version ID",
                     "Synopsis":"Read a Code System Version by ID",
                     "HTTPMethod":"GET",
@@ -1324,6 +1404,36 @@
                     ]
                 },
                 {
+                    "MethodName":"Search Resolved Value Set Definitions",
+                    "Synopsis":"Search All Pre-Resolved CTS2 Value Set Definitions. Note each Value Set Definition, when resolved, will be stored here for future use.",
+                    "HTTPMethod":"GET",
+                    "URI":"/resolvedvaluesets",
+                    "parameters":[
+                        {
+                            "Name":"format",
+                            "Required":"N",
+                            "Type":"enumerated",
+                            "EnumeratedList": [
+                                "",
+                                "json",
+                                "xml"
+                            ],
+                            "EnumeratedDescription": {
+                                "": "Default (xml), or the value of the 'Accept' header",
+                                "json": "JSON Format",
+                                "xml": "CTS2 XML"
+                            },
+                            "Description":"Response Format"
+                        },
+                        {
+                            "Name":"maxtoreturn",
+                            "Required":"N",
+                            "Type":"int",
+                            "Description":"Number of results to return"
+                        }
+                    ]
+                },
+                {
                     "MethodName":"Search Concept Domains",
                     "Synopsis":"Search All CTS2 Concept Domains",
                     "HTTPMethod":"GET",
@@ -1395,8 +1505,8 @@
                     ]
                 },
                 {
-                    "MethodName":"Read a Concept Domain ID",
-                    "Synopsis":"Read a Concept Domain ID",
+                    "MethodName":"Read a Concept Domain by ID",
+                    "Synopsis":"Read a Concept Domain by ID",
                     "HTTPMethod":"GET",
                     "URI":"/conceptdomain/:conceptdomainid",
                     "parameters":[
